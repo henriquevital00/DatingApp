@@ -1,0 +1,57 @@
+<div class="row" *ngIf="member">
+  <div class="col-4">
+    <div class="card">
+      <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}" class="card-img-top img-thumbnail">
+      <div class="card-body">
+        <div>
+          <strong>Location:</strong>
+          <p>{{member.city}}, {{member.country}}</p>
+        </div>
+        <div>
+          <strong>Age:</strong>
+          <p>{{member.age}}</p>
+        </div>
+        <div>
+          <strong>Last Active:</strong>
+          <p>{{member.lastActive}}</p>
+        </div>
+        <div>
+          <strong>Member since:</strong>
+          <p>{{member.created}}</p>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <div class="btn-group d-flex">
+          <button class="btn btn-primary">Like</button>
+          <button class="btn btn-success">Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-8">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+      <li [ngbNavItem]="1"><a ngbNavLink>About {{member.knownAs}}</a>
+        <ng-template ngbNavContent>
+          <h4>Description</h4>
+          <p>{{member.introduction}}</p>
+          <h4>Looking for</h4>
+          <p>{{member.lookingFor}}</p>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="2"><a ngbNavLink>Interests</a>
+        <ng-template ngbNavContent>{{member.interests}}</ng-template>
+      </li>
+      <li [ngbNavItem]="3"><a ngbNavLink>Photo</a>
+        <ng-template ngbNavContent>
+          <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"
+            style="display: inline-block; margin-bottom: 20px;"></ngx-gallery>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]=" 4"><a ngbNavLink>Message</a>
+        <ng-template ngbNavContent></ng-template>
+      </li>
+    </ul>
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+  </div>
+</div>
