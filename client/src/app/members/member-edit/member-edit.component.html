@@ -38,7 +38,8 @@
   </div>
   <div class="col-8">
     <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-      <li [ngbNavItem]="1"><a ngbNavLink>About {{member.knownAs}}</a>
+      <li [ngbNavItem]="1">
+        <a ngbNavLink>About</a>
         <ng-template ngbNavContent>
           <div class="alert alert-info" *ngIf="editForm.dirty">
             <strong>Information:</strong> You have made changes.
@@ -60,8 +61,11 @@
           </form>
         </ng-template>
       </li>
-      <li [ngbNavItem]="2"><a ngbNavLink>Edit Photos</a>
-        <app-photo-editor [member]="member"></app-photo-editor>
+      <li [ngbNavItem]="2">
+        <a ngbNavLink>Edit Photos</a>
+        <ng-template ngbNavContent>
+          <app-photo-editor [member]="member"></app-photo-editor>
+        </ng-template>
       </li>
     </ul>
     <div [ngbNavOutlet]="nav" class="mt-2"></div>
