@@ -45,7 +45,8 @@ namespace API.Controllers
             {
                 Username = user.UserName,
                 Token = _tokenService.CreateToken(user),
-                KnownAs = user.KnowAs
+                KnownAs = user.KnowAs,
+                Gender = user.Gender
             };
         }
 
@@ -69,7 +70,8 @@ namespace API.Controllers
                     Username = user.UserName,
                     Token = _tokenService.CreateToken(user),
                     PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url,
-                    KnownAs = user.KnowAs
+                    KnownAs = user.KnowAs,
+                    Gender = user.Gender
                 };
             }
             return Unauthorized("Invalid username");
